@@ -1,0 +1,18 @@
+apiVersion: lambda.aws.upbound.io/v1beta1
+kind: Function
+metadata:
+    labels:
+        example-label: example
+    name: example
+spec:
+    forProvider:
+        handler: index.handler
+        packageType: Zip
+        region: us-east-1
+        roleSelector:
+            matchLabels:
+                testing.upbound.io/example-name: role
+        runtime: node18.x
+        s3Bucket: lambda-example-handler-code
+        s3Key: handler.zip
+        timeout: 60

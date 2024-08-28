@@ -1,5 +1,5 @@
 
-#Api with Crossplane
+# Api with Crossplane
 
 This document is a walkthrough to the key resource kinds available in the API Gateway v2 provider and how to use them to manage your API Gateway resources. While the example focuses on AWS, the same principles apply to other cloud providers supported by Crossplane.
 

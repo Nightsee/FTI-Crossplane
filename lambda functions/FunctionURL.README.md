@@ -1,6 +1,6 @@
 
 # Managing AWS Lambda Function URLs with Crossplane
-This guide focuses on the FunctionURL resource, which is used to create and manage AWS Lambda Function URLs. AWS Lambda Function URLs provide a dedicated HTTP(S) endpoint for invoking a Lambda direclty over HTTP.
+This document focuses on the FunctionURL resource, which is used to create and manage AWS Lambda Function URLs. AWS Lambda Function URLs provide a dedicated HTTP(S) endpoint for invoking a Lambda direclty over HTTP.
 
 ## Prequisites
 - kubernetes cluster with crossplane and kubectl installed.

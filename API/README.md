@@ -57,6 +57,8 @@ An Integration in API Gateway v2 represents the connection between an API route 
 		integrationUri: arn:aws:lambda:region:xxxxxxxx:function:<functionName>
 		payloadFormatVersion: '2.0'
 		region: us-west-1
+  	  providerConfigRef:
+  		name: default
 
 ##### Key Components
 - apiIdSelector: Selects the API to which the integration is associated by matching the labels.
@@ -81,6 +83,9 @@ A Route in Apigatewayv2 defines the path and methods for an API request and asso
 		targetSelector:
 		  matchLabels:
 			integration: apigatewayv2-test-integration
+	  providerConfigRef:
+  		name: default
+
 ##### Key Components
 - apiIdSelector: Selects the API to which the route belongs.
 - routeKey: Specifies the route's method and path.

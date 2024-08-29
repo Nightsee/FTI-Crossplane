@@ -34,6 +34,14 @@ aws  eks  --region  eu-west-3  update-kubeconfig  --name  ft-eks
 
 ```
 
+Verify Access to the Cluster:
+
+```bash
+
+kubectl  get  nodes
+
+```
+
 ## Overview
 
 Crossplane integrates your Kubernetes cluster with external, non-Kubernetes resources, allowing platform teams to create custom Kubernetes APIs to manage these resources seamlessly. It provides a unified way to deploy, monitor, and manage cloud services such as AWS, Azure, or Google Cloud directly through Kubernetes.
@@ -102,10 +110,9 @@ Crossplane integrates your Kubernetes cluster with external, non-Kubernetes reso
 
 3.  **Create Managed Resources** (e.g., S3, Lambda) using Crossplane CRDs, representing external resources as Kubernetes objects.
 
-Verify Access to the Cluster:
+## Import Existing Resources
 
-```bash
+resources that are already provisioned in a Provider, we can import them as managed resources and let Crossplane manage them. A managed resource’s managementPolicies field enables importing external resources into Crossplane.
 
-kubectl  get  nodes
-
-```
+Please check documentation here:
+[text](https://docs.crossplane.io/latest/guides/import-existing-resources/)https://docs.crossplane.io/latest/guides/import-existing-resources/

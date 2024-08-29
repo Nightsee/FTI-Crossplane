@@ -1,6 +1,6 @@
-# Crossplane Serverless Application Deployment
+# Crossplane Overview
 
-This documentation provides an overview of deploying a serverless application using Crossplane. The application includes AWS services such as S3, Lambda, API Gateway, and DynamoDB, all managed within a Kubernetes cluster.
+This documentation provides an overview of crossplane
 
 ## Prerequisites
 
@@ -109,63 +109,3 @@ Verify Access to the Cluster:
 kubectl  get  nodes
 
 ```
-
-## Deployment Order and Role of Manifests
-
-To deploy our serverless application using Crossplane, we need to apply the manifests in the correct order, ensuring each resource is created with the dependencies it requires. Here’s the order to apply our manifests, along with the role of each:
-
-1.  **s3.yaml:**
-
-This manifest creates the S3 bucket used for storing objects needed by our application.
-
-    kubectl apply -f s3.yaml
-
-2.  **lambda_role.yaml:**
-
-This manifest creates the IAM role for our Lambda function, providing the necessary permissions for it to execute.
-
-      kubectl apply -f lambda_role.yaml
-
-3.  **lambda.yaml:**
-
-This manifest deploys the Lambda function itself, specifying the code and configurations. But first, we need to deploy the Lambda function, we need to upload our function code as a `.zip` file to an S3 bucket. Here’s a sample function and the command to upload it:
-
-- Create the ZIP File
-
-  zip func.zip index.js
-
-- Upload the ZIP File to S3
-
-  aws s3 cp func.zip s3://your-bucket-name/
-
-  kubectl apply -f lambda.yaml
-
-4.  **apigateway_v2.yaml:**
-
-This manifest creates the API Gateway, setting up the base configuration for our API.
-
-    kubectl apply -f apigateway_v2.yaml
-
-5.  **apigateway_v2_integration.yaml:**
-
-This manifest creates the integration between the API Gateway and the Lambda function, allowing the API Gateway to invoke the Lambda.
-
-      kubectl apply -f apigateway_v2_integration.yaml
-
-6.  **apigateway_v2_route.yaml:**
-
-This manifest defines the route for the API Gateway, specifying how incoming requests are routed to the integration.
-
-    kubectl apply -f apigateway_v2_route.yaml
-
-7.  **apigateway_v2_stage.yaml:**
-
-This manifest creates the stage for our API Gateway, which is a logical reference to a lifecycle state of our API (like development, staging, or production).
-
-    kubectl apply -f apigateway_v2_stage.yaml
-
-8.  **apigateway_v2_deployment.yaml:**
-
-This manifest creates the deployment for our API Gateway, which is a snapshot of the API configuration at a specific point in time.
-
-       kubectl apply -f apigateway_v2_deployment.yaml`

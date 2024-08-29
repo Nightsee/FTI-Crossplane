@@ -6,7 +6,7 @@ This document is a walkthrough to the key resource kinds available in the iam pr
 ## Prequisites
 
 - kubernetes cluster with crossplane and kubectl installed.
-- the upbound aws lambda provider, the manifest for the provider is in "provider-iam.yaml".
+- the upbound aws iam provider, the manifest for the provider is in "provider-iam.yaml".
 
 ## Provisioning & managing IAM roles and permissions
 

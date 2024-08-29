@@ -1,6 +1,6 @@
 # DynamoDB Table Operations
 
-This document provides instructions for inserting and fetching items from the DynamoDB table `cp-database-asatout`.
+This document provides instructions for inserting and fetching items from the DynamoDB table `dynamodb-table-asatout`.
 
 ## Table Schema
 

@@ -6,7 +6,7 @@ This document is a walkthrough to the key resource kinds available in the API Ga
 ## Prequisites
 
 - kubernetes cluster with crossplane and kubectl installed.
-- the upbound aws lambda provider, the manifest for the provider is in " provider-apigatewayv2.yaml ".
+- the upbound aws apigatewayv2 provider, the manifest for the provider is in "provider-apigatewayv2.yaml".
 
 ## Provisioning & managing Api
 To Provision a fully functional api using Crossplane, we need to define  a set of resources, and they are:

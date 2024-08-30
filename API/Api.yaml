@@ -1,0 +1,84 @@
+apiVersion: apigatewayv2.aws.upbound.io/v1beta1
+kind: API
+metadata:
+  labels:
+    api: apigatewayv2-test
+  name: test-api
+spec:
+  forProvider:
+    name: test-http-api
+    protocolType: HTTP
+    region: us-west-1
+  providerConfigRef:
+    name: default
+---
+apiVersion: apigatewayv2.aws.upbound.io/v1beta1
+kind: Integration
+metadata:
+  labels:
+    integration: apigatewayv2-test-integration
+  name: example-websocket
+spec:
+  forProvider:
+    apiIdSelector:
+      matchLabels:
+      api: apigatewayv2-test
+    integrationMethod: POST
+    integrationType: HTTP
+    integrationUri: arn:aws:lambda:region:xxxxxxxx:function:<functionName>
+    payloadFormatVersion: '2.0'
+    region: us-west-1
+  providerConfigRef:
+    name: default
+---
+apiVersion: apigatewayv2.aws.upbound.io/v1beta1
+kind: Route
+metadata:
+  name: example-route
+spec:
+  forProvider:
+    apiIdSelector:
+      matchLabels:
+      api: apigatewayv2-http
+    region: us-west-1
+    routeKey: POST /login
+    targetSelector:
+      matchLabels:
+        integration: apigatewayv2-test-integration
+  providerConfigRef:
+    name: default
+---
+apiVersion: apigatewayv2.aws.upbound.io/v1beta2
+kind: Stage
+metadata:
+  labels:
+    stage: apigatewayv2-test-stage
+  name: example-stage
+spec:
+  forProvider:
+    apiIdSelector:
+      matchLabels:
+        api: apigatewayv2-test
+    deploymentIdSelector:
+      matchLabels:
+        deployment: apigatewayv2-test-deployment
+    name: dev
+    region: us-west-1
+  providerConfigRef:
+	  	name: default
+---
+apiVersion: apigatewayv2.aws.upbound.io/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    deployment: apigatewayv2-test-deployment
+  name: example-deployment
+spec:
+  forProvider:
+    apiIdSelector:
+      matchLabels:
+        api: apigatewayv2-test
+    description: Example deployment of our api
+    region: us-west-1
+  providerConfigRef:
+    name: default

@@ -5,6 +5,7 @@ This documentation provides an overview of deploying a serverless application us
 ## Deployment Order and Role of Manifests
 
 To deploy our serverless application using Crossplane, we need to apply the manifests in the correct order, ensuring each resource is created with the dependencies it requires. Here’s the order to apply our manifests, along with the role of each:
+Note: We need to install provider for each resources (eg. provider-aws-apigateway, provider-aws-lambda)
 
 1.  **s3.yaml:**
 

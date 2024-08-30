@@ -35,7 +35,6 @@ To Provision a fully functional api using Crossplane, we need to define  a set o
 ##### Key Components
 - protocolType: Specifies the type of API (HTTP or WebSocket).
 - name: The name of the API.
-- corsConfiguration: Defines CORS settings for the API.
 - providerConfigRef: References the AWS Provider configuration.
 
 #### 2. Define the Integration resource:

@@ -155,7 +155,3 @@ kubectl apply -f api_route.yaml
 ### 6. Integration with API Gateway
 
 After creating the User Pool, User Pool Client, User Pool Domain, and Authorizer, configure your API Gateway to use these resources for securing API requests.
-
-## Conclusion
-
-We have successfully secured your API Gateway by creating a Cognito User Pool, User Pool Client, User Pool Domain, and Authorizer using Crossplane. This setup ensures that only authenticated and authorized users can access our API.
